@@ -25,6 +25,10 @@ export class PollVoteComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    
+  }
+
+  ngOnChanges () {
     if (this.voted) this.generateCharts();
   }
 
@@ -51,7 +55,7 @@ export class PollVoteComponent implements OnInit {
         },
       ],
       xaxis: {
-        categories: options,
+        categories: this.options,
       },
       plotOptions: {
         bar: {
