@@ -5,11 +5,10 @@
  * @modify date 2020-11-29 08:24:17
  * @desc Poll Model
  */
-export interface Poll {
+import { PollForm } from './poll-form.model';
+
+export interface Poll extends PollForm {
   id: number; // 1001
-  question: string; // Which day of the week you like the most?
   results: number[]; // [0, 0, 0, 5, 2]
-  options: string[]; // [Sunday, Monday, Thursday...]
-  thumbnail: string; // https;//image.png
   voted: boolean;
 }
