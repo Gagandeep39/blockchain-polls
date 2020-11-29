@@ -16,7 +16,7 @@ export class AppComponent {
       id: 1,
       thumbnail: unsplashed(300, 400, 'random'),
       results: [0, 3, 4],
-      voted: true,
+      voted: false,
       question: 'Do you like Cats more or Dogs',
       options: ['Cats', 'Dogs', 'None'],
     },
@@ -31,6 +31,11 @@ export class AppComponent {
   ];
 
   setActivePoll(poll) {
-    this.activePoll = poll;
+    this.activePoll = null;
+
+    // Workaround for fixing graph not rendering
+    setTimeout(() => {
+      this.activePoll = poll;
+    }, 100);
   }
 }
