@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import * as unsplashed from 'unsplash';
+import { Poll } from './models/poll.model';
 
 @Component({
   selector: 'app-root',
@@ -8,20 +10,27 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'blockchain-poll';
   showPollForm: boolean = false;
-  polls = [
+  activePoll: Poll = null;
+  polls: Poll[] = [
     {
-      image:
-        'https://lh3.googleusercontent.com/proxy/BFvRH81_36Kv16DvJ2sVsYtNaO2JTqSTEZO-fBQodqq-bVeThz_W3-kadiKkHjJPslbDvq6kGpv6xRW9q_sbhC0Ko_yBG7FA8YqNCRDSUoJVlhQe',
-      votes: [0, 3, 4],
+      id: 1,
+      thumbnail: unsplashed(300, 400, 'random'),
+      results: [0, 3, 4],
       voted: true,
       question: 'Do you like Cats more or Dogs',
+      options: ['Cats', 'Dogs', 'None'],
     },
     {
-      image:
-        'https://lh3.googleusercontent.com/proxy/BFvRH81_36Kv16DvJ2sVsYtNaO2JTqSTEZO-fBQodqq-bVeThz_W3-kadiKkHjJPslbDvq6kGpv6xRW9q_sbhC0Ko_yBG7FA8YqNCRDSUoJVlhQe',
-      votes: [0, 99, 4],
+      id: 4,
+      thumbnail: unsplashed(300, 500, 'random'),
+      results: [0, 99, 4],
       voted: true,
-      question: 'Do you like Cats more or Dogs',
+      question: 'Your favourite Month',
+      options: ['Jan', 'Feb', 'April'],
     },
   ];
+
+  setActivePoll(poll) {
+    this.activePoll = poll;
+  }
 }
