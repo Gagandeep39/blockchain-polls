@@ -27,11 +27,11 @@ jobs:
         run: |
           npm install -g @angular/cli@latest
           npm install
-          ng build --prod --base-href="/frontend/"
+          ng build --prod --base-href="/blockchain-polls/"
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v2
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BASE_BRANCH: main
           BRANCH: gh-pages
-          FOLDER: dist/frontend
+          FOLDER: frontend/dist/blockchain-poll
