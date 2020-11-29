@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - '**'
-    # paths:
-    #   - 'frontend/**'
+    paths:
+      - 'frontend/**'
 
 defaults:
   run:
