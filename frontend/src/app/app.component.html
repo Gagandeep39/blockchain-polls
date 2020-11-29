@@ -1,6 +1,8 @@
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand mr-auto" href="#">Blockchain Polls</a>
-  <button class="btn btn-secondary" (click)="showPollForm=!showPollForm">Create Poll</button>
+  <button class="btn btn-secondary" (click)="showPollForm = !showPollForm">
+    Create Poll
+  </button>
   <router-outlet></router-outlet>
 </nav>
 <section class="jumbotron bg-light text-center">
@@ -9,6 +11,14 @@
 </section>
 <app-poll-create *ngIf="showPollForm"></app-poll-create>
 <div class="d-flex">
-  <div class="container poll-list">List</div>
+  <div class="container poll-list">
+    <app-poll-card
+      *ngFor="let poll of polls"
+      [image]="poll.image"
+      [question]="poll.question"
+      [votes]="poll.votes"
+      [voted]="poll.voted"
+    ></app-poll-card>
+  </div>
   <div class="container poll-detail">Detail</div>
 </div>
