@@ -9,6 +9,7 @@
     - [App Component](#app-component)
     - [PollService](#pollservice)
     - [Web3 Service](#web3-service)
+  - [Development](#development)
 
 ## Mini Project
 
@@ -46,3 +47,7 @@
 ### Web3 Service
 
 - Actual Communication with Blockcahin
+
+## Development
+
+- `package.json` contains `--poll` to enable live reload in shared volums
