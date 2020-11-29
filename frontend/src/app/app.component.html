@@ -9,7 +9,10 @@
   <h1>Polls Rethinked</h1>
   <p>Powered By Blockchain</p>
 </section>
-<app-poll-create *ngIf="showPollForm"></app-poll-create>
+<app-poll-create
+  *ngIf="showPollForm"
+  (pollCreated)="handlePollCreate($event)"
+></app-poll-create>
 <div class="d-flex">
   <div class="container poll-list">
     <app-poll-card
@@ -28,6 +31,8 @@
       [voted]="activePoll.voted"
       [options]="activePoll.options"
       [results]="activePoll.results"
+      [id]="activePoll.id"
+      (pollVoted)="handlePollVote($event)"
     ></app-poll-vote>
   </div>
 </div>

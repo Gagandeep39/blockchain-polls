@@ -5,8 +5,9 @@
  * @modify date 2020-11-29 09:21:18
  * @desc Create new Form
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PollForm } from 'src/app/models/poll-form.model';
 
 @Component({
   selector: 'app-poll-create',
@@ -15,6 +16,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PollCreateComponent implements OnInit {
   pollForm: FormGroup;
+  @Output() pollCreated: EventEmitter<PollForm> = new EventEmitter();
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -30,5 +32,17 @@ export class PollCreateComponent implements OnInit {
 
   submitForm() {
     console.log(this.pollForm.value);
+    const formData: PollForm = {
+      question: this.pollForm.get('question').value,
+      thumbnail: this.pollForm.get('image').value,
+      options: [
+        this.pollForm.get('op1').value,
+        this.pollForm.get('op2').value,
+        this.pollForm.get('op3').value,
+      ],
+    };
+    if (this.pollForm.valid) {
+      this.pollCreated.emit(formData);
+    }
   }
 }
