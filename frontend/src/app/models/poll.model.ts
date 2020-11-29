@@ -11,4 +11,5 @@ export interface Poll {
   results: number[]; // [0, 0, 0, 5, 2]
   options: string[]; // [Sunday, Monday, Thursday...]
   thumbnail: string; // https;//image.png
+  voted: boolean;
 }
