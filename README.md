@@ -51,3 +51,6 @@
 ## Development
 
 - `package.json` contains `--poll` to enable live reload in shared volums
+- External libraries
+  - `apexcharts`
+  - `unsplash`
