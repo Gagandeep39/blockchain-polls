@@ -15,7 +15,6 @@ import * as unsplashed from 'unsplash';
   providedIn: 'root',
 })
 export class PollService {
-
   polls: Poll[] = [
     {
       id: 1,
@@ -41,7 +40,11 @@ export class PollService {
     return interval(1000).pipe(map(() => this.polls));
   }
 
-  createPolls() {}
+  createPolls(pollData) {
+    console.log(pollData);
+  }
 
-  vote() {}
+  vote(pollData) {
+    console.log(pollData);
+  }
 }
