@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import * as unsplashed from 'unsplash';
+import { Component, OnInit } from '@angular/core';
 import { Poll } from './models/poll.model';
+import { PollService } from './services/poll.service';
 
 @Component({
   selector: 'app-root',
@@ -11,24 +11,13 @@ export class AppComponent {
   title = 'blockchain-poll';
   showPollForm: boolean = false;
   activePoll: Poll = null;
-  polls: Poll[] = [
-    {
-      id: 1,
-      thumbnail: unsplashed(300, 400, 'random'),
-      results: [0, 3, 4],
-      voted: false,
-      question: 'Do you like Cats more or Dogs',
-      options: ['Cats', 'Dogs', 'None'],
-    },
-    {
-      id: 4,
-      thumbnail: unsplashed(300, 500, 'random'),
-      results: [0, 99, 4],
-      voted: true,
-      question: 'Your favourite Month',
-      options: ['Jan', 'Feb', 'April'],
-    },
-  ];
+  polls = null;
+
+  constructor(private pollService: PollService) {}
+
+  ngOnInit(): void {
+    this.polls = this.pollService.getPolls();
+  }
 
   setActivePoll(poll) {
     this.activePoll = null;

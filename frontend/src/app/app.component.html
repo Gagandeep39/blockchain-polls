@@ -13,7 +13,7 @@
 <div class="d-flex">
   <div class="container poll-list">
     <app-poll-card
-      *ngFor="let poll of polls"
+      *ngFor="let poll of polls | async"
       [image]="poll.thumbnail"
       [question]="poll.question"
       [votes]="poll.results"
