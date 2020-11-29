@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PollCreateComponent } from './components/poll-create/poll-create.component';
 import { PollCardComponent } from './components/poll-card/poll-card.component';
+import { PollVoteComponent } from './components/poll-vote/poll-vote.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PollCreateComponent,
-    PollCardComponent
+    PollCardComponent,
+    PollVoteComponent
   ],
   imports: [
     BrowserModule,
