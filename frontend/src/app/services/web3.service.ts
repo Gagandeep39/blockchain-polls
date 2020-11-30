@@ -28,7 +28,7 @@ export class Web3Service {
       // contractAbi can be fetched from remix
       // Go to compiler -> ABI (At bottom) -> Copy to cliboard -> Paste it in assets folder
       // Must be updated everytime we change solicity code
-      this.contract = new Contract(contractAbi, this.contractAddress);
+      this.contract = new this.web3.eth.Contract(contractAbi, this.contractAddress);
 
       window.ethereum.enable().catch((error) => console.log(error));
     } else {
@@ -42,19 +42,7 @@ export class Web3Service {
 
   async executeTransaction(functionName, ...args: any[]): Promise<void> {
     const acc = await this.getAccount();
-    this.contract.methods[functionName](...args).send({ from: acc });
-    return null;
+    return this.contract.methods[functionName](...args).send({ from: acc });
   }
 
-  vote(pollId, vote): Promise<void> {
-    this.contract.methods['vote'](pollId, vote).send({ from: '' });
-    return null;
-  }
-
-  createPoll(question, thumbnail, options): Promise<void> {
-    this.contract.methods['createPoll'](question, thumbnail, options).send({
-      from: '',
-    });
-    return null;
-  }
 }
