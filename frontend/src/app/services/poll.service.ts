@@ -10,6 +10,10 @@ import { interval, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Poll } from '../models/poll.model';
 import * as unsplashed from 'unsplash';
+import { Web3Service } from './web3.service';
+import { PollVote } from '../models/poll-vote.model';
+import { PollForm } from '../models/poll-form.model';
+import { fromAscii } from 'web3-utils';
 
 @Injectable({
   providedIn: 'root',
@@ -34,17 +38,24 @@ export class PollService {
     },
   ];
 
-  constructor() {}
+  constructor(private web3Service: Web3Service) {}
 
   getPolls(): Observable<Poll[]> {
     return interval(1000).pipe(map(() => this.polls));
   }
 
-  createPolls(pollData) {
+  createPolls(pollData: PollForm) {
     console.log(pollData);
+    this.web3Service.executeTransaction(
+      'createPoll',
+      pollData.question,
+      pollData.thumbnail || '',
+      pollData.options.map((opt) => fromAscii(opt))
+    );
   }
 
-  vote(pollData) {
+  vote(pollData: PollVote) {
     console.log(pollData);
+    this.web3Service.executeTransaction('vote', pollData.id, pollData.vote);
   }
 }
