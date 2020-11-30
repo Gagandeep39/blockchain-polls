@@ -17,6 +17,7 @@
 		"oderwat.indent-rainbow",
 		"angular.ng-template",
 		"yzhang.markdown-all-in-one",
+		"juanblanco.solidity",
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
